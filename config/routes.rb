@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'session/signin'
+  get 'session/signup'
+  get 'session/signout'
+  post 'session/signup', to: "session#create_user"
+  post 'session/signin', to: "session#login"
+  post "checkuser", to: "session#checkuser"
+  post "upload", to: "session#upload"
+  resources :roles
   resources :employees
   root to: "welcome#index"
   get "welcome", to: "welcome#index"

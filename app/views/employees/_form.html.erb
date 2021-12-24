@@ -31,6 +31,18 @@
     <%= form.collection_select :department_id, @departments, :id, :name, {prompt: "Please select"} %>
   </div>
 
+  <hr>
+
+  <h2>Roles</h2>
+
+  <div class="field">
+    <% @roles.each do|role| %>
+      
+      <%= check_box_tag("role[]", role.id) %> <%= role.name %>
+
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

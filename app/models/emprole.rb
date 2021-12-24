@@ -1,0 +1,2 @@
+class Emprole < ApplicationRecord
+end

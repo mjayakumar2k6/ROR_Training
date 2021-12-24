@@ -24,6 +24,10 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
 
+    params[:role].each do|role|
+      @employee.roles << Role.find(role)
+    end if params[:role]
+
     respond_to do |format|
       if @employee.save
         format.html { redirect_to employee_url(@employee), notice: "Employee was successfully created." }
@@ -65,7 +69,8 @@ class EmployeesController < ApplicationController
     end
 
     def set_departments
-      @departments = Department.all
+      @departments = Department.active
+      @roles = Role.all
     end
 
     # Only allow a list of trusted parameters through.

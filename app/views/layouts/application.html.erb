@@ -14,7 +14,9 @@
     <header>
       <div style="display:flex;">
         <%= link_to "Home", root_url %> | 
-        <%= link_to "Departments", departments_url %>
+        <%= link_to "Departments", departments_url %> | 
+        <%= link_to "Signout", session_signout_url %> |
+        <%= current_user.username if current_user%>
       </div>
     </header>
     <%= yield %>

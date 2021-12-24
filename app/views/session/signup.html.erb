@@ -1,0 +1,15 @@
+<h1>SignUp</h1>
+<%= form_for( session_signup_path ) do |f| %>
+<div>
+User Name
+<%= text_field :user, :username %>
+</div>
+<div>
+Password
+<%= password_field :user, :password %>
+</div>
+<%= submit_tag "Signup" %>
+<% end %>
+
+If have an account
+<%= link_to "Signin", session_signin_path %>

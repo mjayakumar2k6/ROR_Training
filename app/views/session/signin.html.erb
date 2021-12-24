@@ -1,0 +1,54 @@
+<h1>Signin</h1>
+<%= notice %>
+<%= form_for( session_signin_path ) do |f| %>
+<div>
+User Name
+<%= text_field :user, :username %>
+</div>
+<div>
+Password
+<%= password_field :user, :password %>
+</div>
+<%= submit_tag "Signin" %>
+<% end %>
+
+Don't have an account
+<%= link_to "Signup", session_signup_path %>
+
+
+<%= form_with ({url: "/session/signin", method: "get"}) do |form| %>
+    <%= form.label :firstname%>
+    <%= form.check_box :firstname %>
+    <%= form.check_box :firstname %>
+    <%= form.check_box :firstname %>
+    
+    <%= form.radio_button :select, :rails, {value: "Rails"} %> Rails | 
+    <%= form.radio_button :select, 2, {value: "Ruby"} %> Ruby
+
+    <%= form.text_area :user%>
+
+    <%= form.hidden_field :hiddenvalue, {value: 12}%>
+    <%= form.number_field :count, min:100, max: 1000, step: 100%>
+    <%= form.date_field :date%>
+
+    <%= form.collection_select :dept, Department.all, :id, :name, {prompt: "Please select"} %>
+    <%= form.select :selectarray, ["One", "Two", "Three"]%><br>
+    <%= form.collection_check_boxes :selectdep, Department.all, :id, :name %>
+    <br>
+    <%= form.collection_radio_buttons :selectdep, Department.all, :id, :name %>
+    <%= submit_tag "Submit"%>
+<%end%>
+
+<%= form_tag( '/checkuser' , remote: true) do |f| %>
+    <%= text_field :user, :username %>
+    <%= submit_tag "Check User" %>
+<% end %>
+
+<h3 id="ava"></h3>
+
+<h2>File Upload</h2>
+
+<%= form_with ({url: "/upload", multipart: true}) do |form|%>
+    <%= form.file_field :upload%>
+    <%= submit_tag "Upload" %>
+<%end%>
